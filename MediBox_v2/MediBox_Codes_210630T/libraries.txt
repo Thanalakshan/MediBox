@@ -1,0 +1,6 @@
+DHT sensor library for ESPx
+Adafruit GFX Library
+Adafruit SSD1306
+PubSubClient
+NTPClient
+ESP32Servo

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -319.8, "left": -669.2, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -556.8,
+      "left": -551.96,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -738.9,
+      "left": -543,
+      "attrs": { "humidity": "62.5", "temperature": "26.5" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -729.9,
+      "left": -811.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr2",
+      "top": -729.9,
+      "left": -418.3,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -333.6,
+      "left": -516.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -932.2,
+      "left": -603,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:AO", "esp:35", "green", [ "v0" ] ],
+    [ "esp:5V", "bb1:tp.8", "red", [ "h0" ] ],
+    [ "esp:GND.1", "bb1:tn.7", "black", [ "h0" ] ],
+    [ "ldr1:VCC", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "ldr1:GND", "bb1:tn.1", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.19", "red", [ "v48", "h134.4" ] ],
+    [ "dht1:GND", "bb1:tn.20", "black", [ "v38.4", "h76.8" ] ],
+    [ "ldr2:AO", "esp:34", "blue", [ "v19.2", "h-229.7", "v105.6" ] ],
+    [ "ldr2:VCC", "bb1:tp.25", "red", [ "v28.8", "h0", "v48", "h-48", "v230.4" ] ],
+    [ "ldr2:GND", "bb1:tn.24", "black", [ "v67.2", "h-47.6" ] ],
+    [ "dht1:SDA", "esp:13", "gold", [ "v19.2", "h-76.7", "v172.8" ] ],
+    [ "esp:15", "bb1:18t.e", "magenta", [ "v0", "h153.6", "v134.4" ] ],
+    [ "bb1:17t.e", "bb1:tn.5", "black", [ "v0", "h-220.8" ] ],
+    [ "bz1:1", "bb1:17t.c", "", [ "$bb" ] ],
+    [ "bz1:2", "bb1:18t.c", "", [ "$bb" ] ],
+    [ "servo1:GND", "bb1:tn.2", "black", [ "v19.2", "h-76.8" ] ],
+    [ "servo1:V+", "bb1:tp.3", "red", [ "v28.8", "h-95.9" ] ],
+    [ "servo1:PWM", "esp:2", "white", [ "v19.2", "h105.8", "v364.8" ] ]
+  ],
+  "dependencies": {}
+}
